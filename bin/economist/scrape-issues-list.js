@@ -3,7 +3,14 @@ var fs = require('fs');
 
 var crawler = Crawler.Crawler();
 
-var startUrl = "https://www.economist.com/printedition/covers?print_region=76981";
+var edition = "UK";
+
+var regions = {
+    "UK": "76981"
+}
+
+var startUrl = "https://www.economist.com/printedition/covers?print_region=" + regions[edition];
+
 var baseDir = "data/economist/";
 
 crawler
