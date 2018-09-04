@@ -1,0 +1,19 @@
+{
+  "name": "news-scraper",
+  "version": "1.0.0",
+  "description": "Scraping News into structured documents",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "news",
+    "scraper"
+  ],
+  "author": "deftSEO",
+  "license": "ISC",
+  "dependencies": {
+    "csv-write-stream": "^2.0.0",
+    "node-crawler": "github:deftseo/node-crawler"
+  }
+}
