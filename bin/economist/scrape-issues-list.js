@@ -3,8 +3,8 @@ var fs = require('fs');
 
 var crawler = Crawler.Crawler();
 
+// TODO: Get Edition by command line args
 var edition = "UK";
-
 var regions = {
     "UK": "76981"
 }
