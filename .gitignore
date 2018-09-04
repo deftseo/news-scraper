@@ -1,0 +1,7 @@
+
+# Ignore data dir
+data/
+
+# Ignore node modules
+node_modules/
+
