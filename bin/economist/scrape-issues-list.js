@@ -27,13 +27,12 @@ crawler
             var yearDir = baseDir + issueYear;
             var issueDir = yearDir + "/" + issueDate;
 
-            console.log(issueUrl, issueDate, issueYear, issueDir);
-
             if (!fs.existsSync(yearDir)) {
                 fs.mkdirSync(yearDir);
             }
 
             if (!fs.existsSync(issueDir)) {
+                console.log("New issue found:", issueDate);
                 fs.mkdirSync(issueDir);
 
                 // Add further processing here, since it's a new issue.
