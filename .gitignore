@@ -5,3 +5,6 @@ data/
 # Ignore node modules
 node_modules/
 
+# Ignore node dependency lock file
+package-lock.json
+
