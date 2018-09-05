@@ -17,7 +17,17 @@ crawler
         var coverImages = $coverImg.attr('srcset');
         var imageList = parseSrcsetToList(coverImages);
 
-        console.log(imageList);
+        var $header = $page('h1.print-edition__main-title-header');
+        var issueDate = $page('span.print-edition__main-title-header__date', $header).text().split();
+
+
+        var issue = {
+            url: link.href,
+            date: issueDate,
+            coverImg: imageList
+        };
+
+        console.log(issue);
     })
     .on('end', function() {
     });
