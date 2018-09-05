@@ -20,14 +20,48 @@ crawler
         var $header = $page('h1.print-edition__main-title-header');
         var issueDate = $page('span.print-edition__main-title-header__date', $header).text().split();
 
+        var $sections = $page('div.print-edition__content ul li.list__item');
+        var sections = [];
+
+        $sections.each(function() {
+            var $section = $page(this);
+            var title = $page('div.list__title', $section).text().trim();
+            var stories = [];
+
+            $page('a.list__link', $section).each(function() {
+                var $story = $page(this);
+                var storyUrl = $story.attr('href');
+                var title = $page('span.print-edition__link-title,span.print-edition__link-title-sub', $story).text().trim()
+                var subtitle = $page('span.print-edition__link-flytitle', $story).text().trim()
+
+                var story = {
+                    url: crawler.normaliseUrl(storyUrl, link.href),
+                    title: title
+                };
+
+                if (subtitle) {
+                    story.subtitle = subtitle;
+                }
+
+                stories.push(story);
+            });
+
+            var section = {
+                title: title,
+                stories: stories
+            };
+
+            sections.push(section);
+        });
 
         var issue = {
             url: link.href,
             date: issueDate,
-            coverImg: imageList
+            coverImg: imageList,
+            sections: sections
         };
 
-        console.log(issue);
+        console.log(JSON.stringify(issue, null, 4));
     })
     .on('end', function() {
     });
