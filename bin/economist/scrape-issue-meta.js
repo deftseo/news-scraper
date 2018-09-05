@@ -19,6 +19,7 @@ crawler
 
         var $header = $page('h1.print-edition__main-title-header');
         var issueDate = $page('span.print-edition__main-title-header__date', $header).text().split();
+        var date = link.href.match(/\d{4}-\d{2}-\d{2}/)[0];
 
         var $sections = $page('div.print-edition__content ul li.list__item');
         var sections = [];
@@ -56,7 +57,8 @@ crawler
 
         var issue = {
             url: link.href,
-            date: issueDate,
+            dateStr: issueDate,
+            date: date,
             coverImg: imageList,
             sections: sections
         };
