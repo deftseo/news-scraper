@@ -6,6 +6,7 @@ var crawler = Crawler.Crawler();
 var startUrl = "https://www.economist.com/printedition/2018-09-01";
 
 var STATIC_CDN = "https://cdn.static-economist.com";
+var BASE_DIR = "data/economist/";
 
 crawler
     .startUrl(startUrl)
@@ -63,7 +64,8 @@ crawler
             sections: sections
         };
 
-        console.log(JSON.stringify(issue, null, 4));
+        // console.log(JSON.stringify(issue, null, 4));
+        saveIssueMeta(issue);
     })
     .on('end', function() {
     });
@@ -82,4 +84,18 @@ function parseSrcsetToList(srcset) {
 
 function normaliseImgUrl(imgUrl) {
     return STATIC_CDN + imgUrl;
+}
+
+function saveIssueMeta(issue) {
+    var issueDate = issue.date;
+    var issueYear = issueDate.substring(0,4);
+    var issueDir = BASE_DIR + issueYear + "/" + issueDate;
+    var issueFile = issueDir + "/index.json";
+
+    if (!fs.existsSync(issueDir)) {
+        console.log("New issue found:", issueDate);
+        fs.mkdirSync(issueDir);
+    }
+
+    fs.writeFileSync(issueFile, JSON.stringify(issue, null, 4));
 }
