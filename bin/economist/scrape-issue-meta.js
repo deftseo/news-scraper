@@ -31,8 +31,8 @@ crawler
             $page('a.list__link', $section).each(function() {
                 var $story = $page(this);
                 var storyUrl = $story.attr('href');
-                var title = $page('span.print-edition__link-title,span.print-edition__link-title-sub', $story).text().trim()
-                var subtitle = $page('span.print-edition__link-flytitle', $story).text().trim()
+                var title = $page('span.print-edition__link-title,span.print-edition__link-title-sub', $story).text().trim();
+                var subtitle = $page('span.print-edition__link-flytitle', $story).text().trim();
 
                 var story = {
                     url: crawler.normaliseUrl(storyUrl, link.href),
