@@ -9,6 +9,7 @@ var STATIC_CDN = "https://cdn.static-economist.com";
 var BASE_DIR = "data/economist/";
 
 crawler
+    .quiet()
     .startUrl(startUrl)
     .follow(function(nextUrl, fromUrl) {
         return false;
