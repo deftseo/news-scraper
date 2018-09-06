@@ -68,7 +68,7 @@ crawler
         };
 
         // console.log(JSON.stringify(issue, null, 4));
-        saveIssueMeta(issue);
+        outputIssueMeta(issue);
     })
     .on('end', function() {
     });
@@ -101,3 +101,8 @@ function saveIssueMeta(issue) {
 
     fs.writeFileSync(issueFile, JSON.stringify(issue, null, 4));
 }
+
+function outputIssueMeta(issue) {
+    console.log(JSON.stringify(issue, null, 4));
+}
+
