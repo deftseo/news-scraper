@@ -19,7 +19,9 @@ for ISSUE_DIR in */; do
     
     if [ ! -f $ISSUE_FILE ]; then
         ISSUE_DATE="${ISSUE_DIR::-1}"
-        echo "Creating: ${ISSUE_DATE}"
+        echo "Creating: ${ISSUE_DATE}/${META_FILE}"
+        node ${BIN_DIR}scrape-issue-meta.js $ISSUE_DATE > $ISSUE_FILE
+
     fi
 done;
 
