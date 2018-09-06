@@ -30,6 +30,7 @@ for ISSUE_DIR in */; do
             rm $ISSUE_FILE
         fi
 
+        sleep 10
     fi
 done;
 
