@@ -20,7 +20,7 @@ crawler
     .on('page', function(link, $page) {
         var $coverImg = $page('div.print-edition__cover-widget__image img');
         var coverImages = $coverImg.attr('srcset') || '';
-        var imageList = parseSrcsetToList(coverImages);
+        var imageList = coverImages ? parseSrcsetToList(coverImages) : [];
 
         var $header = $page('h1.print-edition__main-title-header');
         var coverDate = $page('span.print-edition__main-title-header__date', $header).text().trim();
