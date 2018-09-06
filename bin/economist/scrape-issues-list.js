@@ -3,14 +3,17 @@ var fs = require('fs');
 
 var crawler = Crawler.Crawler();
 
+var args = process.argv.slice(2);
+var year = (args.length) ? args[0] : false;
+
 // TODO: Get Edition by command line args
 var edition = "UK";
 var regions = {
     "UK": "76981"
 }
 
-var startUrl = "https://www.economist.com/printedition/covers?print_region=" + regions[edition];
-
+var regionUrl = "https://www.economist.com/printedition/covers?print_region=" + regions[edition];
+var startUrl = year ? regionUrl + "&date_filter[value][year]=" + year : regionUrl
 var baseDir = "data/economist/";
 
 crawler
