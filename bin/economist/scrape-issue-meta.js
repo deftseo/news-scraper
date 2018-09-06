@@ -90,7 +90,6 @@ function normaliseImgUrl(imgUrl) {
 }
 
 function saveIssueMeta(issue) {
-    var issueDate = issue.date;
     var issueYear = issueDate.substring(0,4);
     var issueDir = BASE_DIR + issueYear + "/" + issueDate;
     var issueFile = issueDir + "/index.json";
