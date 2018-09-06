@@ -3,7 +3,10 @@ var fs = require('fs');
 
 var crawler = Crawler.Crawler();
 
-var startUrl = "https://www.economist.com/printedition/2018-09-01";
+var args = process.argv.slice(2);
+var issueDate = (args.length) ? args[0] : '2018-09-01';
+
+var startUrl = "https://www.economist.com/printedition/" + issueDate;
 
 var STATIC_CDN = "https://cdn.static-economist.com";
 var BASE_DIR = "data/economist/";
