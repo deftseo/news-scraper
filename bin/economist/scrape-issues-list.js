@@ -17,6 +17,7 @@ var startUrl = year ? regionUrl + "&date_filter[value][year]=" + year : regionUr
 var baseDir = "data/economist/";
 
 crawler
+    .quiet()
     .startUrl(startUrl)
     .follow(function(nextUrl, fromUrl) {
         return nextUrl.startsWith(startUrl);
