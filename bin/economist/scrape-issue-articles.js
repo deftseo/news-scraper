@@ -37,8 +37,7 @@ var $articleImg = $page('div.blog-post__image img');
 var articleImage = $articleImg.attr('src');
 // TODO: Process @srcset
 
-var $article = $page('div.blog-post__text');
-var $articleText = $page('p', $article);
+var $articleText = $page('div.blog-post__text > p');
 
 var article = {
     title: articleTitle,
