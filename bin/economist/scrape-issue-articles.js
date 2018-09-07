@@ -26,9 +26,9 @@ var articleHtml = fs.readFileSync(articleFile, 'utf-8');
 var $page = cheerio.load(articleHtml);
 
 var $articleTitle = $page('article h1.flytitle-and-title__body .flytitle-and-title__title');
-var articleTitle = $articleTitle.text();
+var articleTitle = $articleTitle.text().trim();
 var $articleSummary = $page('article h1.flytitle-and-title__body+p.blog-post__rubric');
-var articleSummary = $articleSummary.text();
+var articleSummary = $articleSummary.text().trim();
 
 var $articleImg = $page('div.blog-post__image img');
 var articleImage = $articleImg.attr('src');
@@ -48,7 +48,7 @@ var article = {
 
 $articleText.each(function() {
     var $para = $page(this);
-    var text = $para.text();
+    var text = $para.text().trim();
     var isHeader = $para.hasClass('xhead');
     var elem = isHeader ? 'heading' : 'paragraph';
 
