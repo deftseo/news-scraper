@@ -25,12 +25,19 @@ var articleHtml = fs.readFileSync(articleFile, 'utf-8');
 
 var $page = cheerio.load(articleHtml);
 
+var $articleImg = $page('div.blog-post__image img');
+var articleImage = $articleImg.attr('src');
+// TODO: Process @srcset
+
 var $article = $page('div.blog-post__text');
 var $articleText = $page('p', $article);
 
 var article = {
+    image: articleImage,
     body: []
 };
+
+
 
 $articleText.each(function() {
     var $para = $page(this);
@@ -49,3 +56,4 @@ $articleText.each(function() {
 });
 
 console.log('[ARTICLE]', JSON.stringify(article, null, 4));
+
