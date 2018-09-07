@@ -25,6 +25,9 @@ var articleHtml = fs.readFileSync(articleFile, 'utf-8');
 
 var $page = cheerio.load(articleHtml);
 
+var $articleTitle = $page('article h1.flytitle-and-title__body .flytitle-and-title__title');
+var articleTitle = $articleTitle.text();
+
 var $articleImg = $page('div.blog-post__image img');
 var articleImage = $articleImg.attr('src');
 // TODO: Process @srcset
@@ -33,6 +36,7 @@ var $article = $page('div.blog-post__text');
 var $articleText = $page('p', $article);
 
 var article = {
+    title: articleTitle,
     image: articleImage,
     body: []
 };
