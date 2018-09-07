@@ -29,6 +29,8 @@ var $articleTitle = $page('article h1.flytitle-and-title__body .flytitle-and-tit
 var articleTitle = $articleTitle.text().trim();
 var $articleSummary = $page('article h1.flytitle-and-title__body+p.blog-post__rubric');
 var articleSummary = $articleSummary.text().trim();
+var $articlePublish = $page('article div.blog-post__section-date-author time');
+var publishDate = $articlePublish.attr('datetime');
 
 var $articleSubtitle = $page('article h1.flytitle-and-title__body .flytitle-and-title__flytitle');
 var articleSubtitle = $articleSubtitle.text().trim();
@@ -43,6 +45,7 @@ var article = {
     title: articleTitle,
     subtitle: articleSubtitle,
     summary: articleSummary,
+    published: publishDate,
     image: articleImage,
     body: []
 };
