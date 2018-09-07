@@ -30,6 +30,9 @@ var articleTitle = $articleTitle.text().trim();
 var $articleSummary = $page('article h1.flytitle-and-title__body+p.blog-post__rubric');
 var articleSummary = $articleSummary.text().trim();
 
+var $articleSubtitle = $page('article h1.flytitle-and-title__body .flytitle-and-title__flytitle');
+var articleSubtitle = $articleSubtitle.text().trim();
+
 var $articleImg = $page('div.blog-post__image img');
 var articleImage = $articleImg.attr('src');
 // TODO: Process @srcset
@@ -39,6 +42,7 @@ var $articleText = $page('p', $article);
 
 var article = {
     title: articleTitle,
+    subtitle: articleSubtitle,
     summary: articleSummary,
     image: articleImage,
     body: []
