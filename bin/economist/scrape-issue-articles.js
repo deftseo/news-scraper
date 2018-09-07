@@ -31,7 +31,7 @@ var $articleSummary = $page('article h1.flytitle-and-title__body+p.blog-post__ru
 var articleSummary = $articleSummary.text().trim();
 var $articlePublish = $page('article div.blog-post__section-date-author time');
 var publishDate = $articlePublish.attr('datetime');
-var $articleSection = $page('article h3.blog-post__section');
+var $articleSection = $page('article .blog-post__inner h3.blog-post__section');
 var articleSection = $articleSection.text().split('|').pop().trim();
 
 var $articleSubtitle = $page('article h1.flytitle-and-title__body .flytitle-and-title__flytitle');
