@@ -27,6 +27,8 @@ var $page = cheerio.load(articleHtml);
 
 var $articleTitle = $page('article h1.flytitle-and-title__body .flytitle-and-title__title');
 var articleTitle = $articleTitle.text();
+var $articleSummary = $page('article h1.flytitle-and-title__body+p.blog-post__rubric');
+var articleSummary = $articleSummary.text();
 
 var $articleImg = $page('div.blog-post__image img');
 var articleImage = $articleImg.attr('src');
@@ -37,6 +39,7 @@ var $articleText = $page('p', $article);
 
 var article = {
     title: articleTitle,
+    summary: articleSummary,
     image: articleImage,
     body: []
 };
