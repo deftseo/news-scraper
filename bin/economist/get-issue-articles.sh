@@ -31,7 +31,7 @@ if [ -f "$ISSUE_DIR/${META_FILE}" ]; then
                 rm ${ISSUE_DIR}/${FILE_name}
 
             else
-                echo "[SAVED-] ${FILE_NAME}"
+                echo "[SAVED-] ${FILE_NAME} (${FILE_SIZE})"
 
             fi
 
