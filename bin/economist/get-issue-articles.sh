@@ -5,6 +5,7 @@ BIN_DIR="${CWD}/bin/economist/"
 DATA_DIR="data/economist/"
 META_FILE="index.json"
 SLEEP_TIME=10
+MIN_FILE_SIZE=0
 
 DATE=$1
 YEAR="${DATE:0:4}"
@@ -23,7 +24,17 @@ if [ -f "$ISSUE_DIR/${META_FILE}" ]; then
         if [ ! -f "${ISSUE_DIR}/${FILE_NAME}" ]; then
             echo "[SCRAPE] ${URL}"
             node "${BIN_DIR}/scrape-article.js" $URL > ${ISSUE_DIR}/${FILE_NAME}
-            echo "[SAVED-] ${FILE_NAME}"
+
+            FILE_SIZE=$(wc -c <"${ISSUE_DIR}/${FILE_NAME}")
+            if [ $FILE_SIZE -le $MIN_FILE_SIZE ]; then
+                echo "[-WARN-] File size too small! ($FILE_SIZE). Deleting."
+                rm ${ISSUE_DIR}/${FILE_name}
+
+            else
+                echo "[SAVED-] ${FILE_NAME}"
+
+            fi
+
             sleep $SLEEP_TIME
         fi
     done
