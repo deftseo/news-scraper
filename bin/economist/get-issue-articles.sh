@@ -4,6 +4,7 @@ CWD=`pwd`
 BIN_DIR="${CWD}/bin/economist/"
 DATA_DIR="data/economist/"
 META_FILE="index.json"
+SLEEP_TIME=10
 
 DATE=$1
 YEAR="${DATE:0:4}"
@@ -23,7 +24,7 @@ if [ -f "$ISSUE_DIR/${META_FILE}" ]; then
             echo "[SCRAPE] ${URL}"
             node "${BIN_DIR}/scrape-article.js" $URL > ${ISSUE_DIR}/${FILE_NAME}
             echo "[SAVED-] ${FILE_NAME}"
-            sleep 60
+            sleep $SLEEP_TIME
         fi
     done
 fi
