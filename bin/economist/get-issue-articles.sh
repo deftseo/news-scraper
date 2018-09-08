@@ -12,5 +12,12 @@ ISSUE_DIR="${DATA_DIR}${YEAR}/${DATE}"
 
 if [ -f "$ISSUE_DIR/${META_FILE}" ]; then
     echo "Retrieving issue: ${DATE}"
+
+    node "${BIN_DIR}/get-issue-articles.js" $DATE | 
+    while read -r URL; do
+        echo "[GET] ${URL}"
+        node "${BIN_DIR}/scrape-article.js" $URL
+        sleep 60
+    done
 fi
 
