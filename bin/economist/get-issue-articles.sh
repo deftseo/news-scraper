@@ -15,9 +15,16 @@ if [ -f "$ISSUE_DIR/${META_FILE}" ]; then
 
     node "${BIN_DIR}/get-issue-articles.js" $DATE | 
     while read -r URL; do
-        echo "[GET] ${URL}"
-        node "${BIN_DIR}/scrape-article.js" $URL
-        sleep 60
+        echo "[GET-] ${URL}"
+        ARTICLE_ID=`echo ${URL} | grep -Eo "[[:digit:]]+"`
+        FILE_NAME="${ARTICLE_ID}.json"
+        echo "[FILE] ${FILE_NAME}"
+
+        if [ ! -f "${ISSUE_DIR}/${FILE_NAME}" ]; then
+            echo "[GET] ${ISSUE_DIR}/${FILE_NAME}"
+            node "${BIN_DIR}/scrape-article.js" $URL > ${ISSUE_DIR}/${FILE_NAME}
+            sleep 60
+        fi
     done
 fi
 
