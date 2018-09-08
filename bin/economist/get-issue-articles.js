@@ -9,5 +9,10 @@ var issueDir = baseDir + issueYear + "/" + issueDate + "/";
 var issueFile = issueDir + "index.json";
 var issueDoc = JSON.parse(fs.readFileSync(issueFile, 'utf-8'));
 
-console.log(issueDoc);
+// console.log(issueDoc);
 
+issueDoc.sections.forEach(function(section) {
+    section.stories.forEach(function(story) {
+        console.log(story.url);
+    });
+});
