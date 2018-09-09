@@ -17,7 +17,7 @@ if [ -f "$ISSUE_DIR/${META_FILE}" ]; then
 
     node "${BIN_DIR}/get-issue-articles.js" $DATE | 
     while read -r URL; do
-        ARTICLE_ID=`echo ${URL} | grep -Eo "[[:digit:]]+"`
+        ARTICLE_ID=`echo ${URL} | grep -Eo "[[:digit:]]{8}"`
         FILE_NAME="${ARTICLE_ID}.json"
         # echo "[FILE] ${FILE_NAME}"
 
