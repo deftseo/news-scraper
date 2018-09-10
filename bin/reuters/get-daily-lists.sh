@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+CWD=`pwd`
+BIN_DIR="${CWD}/bin/reuters/"
+DATA_DIR="data/reuters/"
+META_FILE="index.json"
+SLEEP_TIME=10
+MIN_FILE_SIZE=0
+
 TODAY=`date +%Y-%m-%d`
 
 START_DATE="2007-01-01"
@@ -11,13 +18,26 @@ CUR_YEAR=`date -d "$CUR_DATE" +%Y`
 
 END_DATE_CMP=`date -d "$END_DATE" +%Y%m%d`
 
+YEAR_DIR="${DATA_DIR}${CUR_YEAR}"
+DAILY_DIR="${DATA_DIR}${CUR_YEAR}/${CUR_DATE}"
 
 while [ $CUR_DATE_CMP -le $END_DATE_CMP ]; do
-    echo "$START_DATE => $END_DATE, $CUR_DATE_CMP => $END_DATE_CMP"
+    if [ ! -d $DAILY_DIR ]; then
+        mkdir -p $DAILY_DIR
+    fi
+
+    DAILY_FILE="${DAILY_DIR}/${META_FILE}"
+
+    if [ ! -f $DAILY_FILE ]; then
+        echo "[-GET-] $CUR_DATE"
+    fi
 
     # Iterate current date
     CUR_DATE=`date -d "$CUR_DATE 1 day" +%Y-%m-%d`
     CUR_DATE_CMP=`date -d "$CUR_DATE" +%Y%m%d`
     CUR_YEAR=`date -d "$CUR_DATE" +%Y`
+
+    YEAR_DIR="${DATA_DIR}${CUR_YEAR}"
+    DAILY_DIR="${DATA_DIR}${CUR_YEAR}/${CUR_DATE}"
 done
 
