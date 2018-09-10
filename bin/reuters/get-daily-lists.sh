@@ -36,6 +36,8 @@ while [ $CUR_DATE_CMP -le $END_DATE_CMP ]; do
         if [ $FILE_SIZE -le $MIN_FILE_SIZE ]; then
             echo "Too small! ($FILE_SIZE). Deleting."
             rm $DAILY_FILE
+        else
+            echo "[SAVED-] ${DAILY_FILE} (${FILE_SIZE})"
         fi
 
         sleep ${SLEEP_TIME}
