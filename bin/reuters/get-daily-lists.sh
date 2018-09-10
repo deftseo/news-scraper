@@ -30,6 +30,15 @@ while [ $CUR_DATE_CMP -le $END_DATE_CMP ]; do
 
     if [ ! -f $DAILY_FILE ]; then
         echo "[-GET-] $CUR_DATE"
+        node ${BIN_DIR}/scrape-daily-list.js ${CUR_DATE} > ${DAILY_FILE}
+
+        FILE_SIZE=$(wc -c <"$DAILY_FILE")
+        if [ $FILE_SIZE -le $MIN_FILE_SIZE ]; then
+            echo "Too small! ($FILE_SIZE). Deleting."
+            rm $DAILY_FILE
+        fi
+
+        sleep ${SLEEP_TIME}
     fi
 
     # Iterate current date
