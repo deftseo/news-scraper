@@ -50,7 +50,7 @@ Scraper.Scraper(articleUrl, function($page, pageUrl) {
         }
     });
 
-    console.log('[ARTICLE]', JSON.stringify(article, null, 4));
+    console.log(JSON.stringify(article, null, 4));
 });
 
 
