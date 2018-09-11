@@ -13,8 +13,36 @@ Scraper.Scraper(articleUrl, function($page, pageUrl) {
     var author = $byline.text().trim();
     var authorLink = $byline.attr('href');
 
-    console.log(title);
-    console.log(channel, "/", published);
-    console.log(author, authorLink);
+    // console.log(title);
+    // console.log(channel, "/", published);
+    // console.log(author, authorLink);
+
+    var $articleText = $page("div.StandardArticleBody_body").children('p, h3');
+
+    var article = {
+        title: title,
+        published: published,
+        section: channel,
+        body : []
+    };
+
+    $articleText.each(function() {
+        var $para = $page(this);
+        var text = $para.text().trim();
+        var elem = this.name;
+        var isHeader = (elem === 'h3');
+        var elemType = isHeader ? "heading" : "paragraph";
+
+        if (text) {
+            var para = {
+                type: elemType,
+                text: text
+            };
+
+            article.body.push(para);
+        }
+    });
+
+    console.log(JSON.stringify(article, null, 4));
 });
 
