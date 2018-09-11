@@ -5,7 +5,7 @@ BIN_DIR="${CWD}/bin/reuters/"
 DATA_DIR="data/reuters/"
 META_FILE="index.json"
 SLEEP_TIME=10
-MIN_FILE_SIZE=0
+MIN_FILE_SIZE=1024
 
 TODAY=`date +%Y-%m-%d`
 
