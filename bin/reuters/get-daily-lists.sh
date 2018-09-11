@@ -28,19 +28,29 @@ while [ $CUR_DATE_CMP -le $END_DATE_CMP ]; do
 
     DAILY_FILE="${DAILY_DIR}/${META_FILE}"
 
+    if [ -f $DAILY_FILE ]; then
+        FILE_SIZE=$(wc -c <"$DAILY_FILE")
+        if [ $FILE_SIZE -le $MIN_FILE_SIZE ]; then
+            echo "[-DEL-] ${CUR_DATE}: Too small! ($FILE_SIZE)."
+            rm $DAILY_FILE
+        fi
+
+    fi
+
     if [ ! -f $DAILY_FILE ]; then
         echo "[-GET-] $CUR_DATE"
         node ${BIN_DIR}/scrape-daily-list.js ${CUR_DATE} > ${DAILY_FILE}
 
         FILE_SIZE=$(wc -c <"$DAILY_FILE")
         if [ $FILE_SIZE -le $MIN_FILE_SIZE ]; then
-            echo "Too small! ($FILE_SIZE). Deleting."
+            echo "[-DEL-] ${CUR_DATE}: Too small! ($FILE_SIZE)."
             rm $DAILY_FILE
         else
             echo "[SAVED-] ${DAILY_FILE} (${FILE_SIZE})"
         fi
 
         sleep ${SLEEP_TIME}
+
     fi
 
     # Iterate current date
