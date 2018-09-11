@@ -9,8 +9,12 @@ Scraper.Scraper(articleUrl, function($page, pageUrl) {
     var pubDate = $page("div.ArticleHeader_date", $header).text().split('/');
     var published = pubDate[0].trim() + " " + pubDate[1].trim();
     var channel = $page("div.ArticleHeader_channel a", $header).text().trim();
+    var $byline = $page("div.BylineBar_byline a", $header);
+    var author = $byline.text().trim();
+    var authorLink = $byline.attr('href');
 
     console.log(title);
     console.log(channel, "/", published);
+    console.log(author, authorLink);
 });
 
