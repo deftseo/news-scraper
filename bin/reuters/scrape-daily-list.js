@@ -24,10 +24,21 @@ Scraper.Scraper(dailyUrl, function($page, pageUrl) {
         var link = $link.attr('href');
         var pubTime = $story.text().replace(title, "").trim();
         var published = curDate + " " + pubTime;
-        var storyId, story;
+        var storyId, story, matches;
 
         if (! /\/videoStory/.test(link)) {
-            storyId = link.match(/id(\w+)$/)[1];
+            // console.log(link);
+            matches = link.match(/id(\w+)$/);
+
+            if (!matches) {
+                // e.g. http://UK.reuters.com/article/homepageCrisis/idUKL1828355._CH_.242020070118
+                matches = link.match(/\/if(\w+)\./);
+            }
+
+            if (matches) {
+                storyId = matches[1];
+            }
+
             //console.log(storyId, title, published, "\n", link);
             story = {
                 id: storyId,
