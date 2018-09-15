@@ -1,4 +1,5 @@
 var Scraper = require("node-crawler/Scraper");
+var url = require("url");
 
 var articleUrl = "http://UK.reuters.com/article/2011/09/20/uk-britain-eu-idUKTRE78J15I20110920";
 
@@ -54,7 +55,7 @@ Scraper.Scraper(articleUrl, function($page, pageUrl) {
 
         var image = {
             type: "image",
-            src: imgSrc,
+            src: url.resolve(pageUrl, imgSrc),
             caption: caption
         };
 
