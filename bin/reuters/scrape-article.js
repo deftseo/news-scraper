@@ -18,12 +18,14 @@ Scraper.Scraper(articleUrl, function($page, pageUrl) {
     // console.log(author, authorLink);
 
     var $articleText = $page("div.StandardArticleBody_body").children('p, h3');
+    var $images = $page("div.StandardArticleBody_body div.Image_container");
 
     var article = {
         title: title,
         published: published,
         section: channel,
-        body : []
+        body : [],
+        media: []
     };
 
     $articleText.each(function() {
@@ -41,6 +43,22 @@ Scraper.Scraper(articleUrl, function($page, pageUrl) {
 
             article.body.push(para);
         }
+    });
+
+    $images.each(function() {
+        var $figure = $page(this);
+        var $image = $page("figure img", $figure).first();
+        var imgSrc = $image.attr('href');
+        var $caption = $page("figcaption", $figure);
+        var caption = $caption.text();
+
+        var image = {
+            type: "image",
+            src: imgSrc,
+            caption: caption
+        };
+
+        article.media.push(image);
     });
 
     console.log(JSON.stringify(article, null, 4));
