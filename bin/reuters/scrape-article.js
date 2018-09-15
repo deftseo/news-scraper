@@ -48,7 +48,7 @@ Scraper.Scraper(articleUrl, function($page, pageUrl) {
     $images.each(function() {
         var $figure = $page(this);
         var $image = $page("figure img", $figure).first();
-        var imgSrc = $image.attr('href');
+        var imgSrc = $image.attr('src');
         var $caption = $page("figcaption", $figure);
         var caption = $caption.text();
 
