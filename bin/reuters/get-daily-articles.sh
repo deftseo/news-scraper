@@ -17,7 +17,7 @@ if [ -f "$ISSUE_DIR/${META_FILE}" ]; then
 
     node "${BIN_DIR}get-daily-articles.js" $DATE | 
     while read -r URL; do
-        ARTICLE_ID=`expr "$URL" : '.*-id\([A-Z0-9]\+\)$'`
+        ARTICLE_ID=`expr "$URL" : '.*-id\([A-Za-z0-9+]\+\)'`
         FILE_NAME="${ARTICLE_ID}.json"
 
         if [ ! -f "${ISSUE_DIR}/${FILE_NAME}" ]; then
