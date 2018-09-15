@@ -1,7 +1,9 @@
 var Scraper = require("node-crawler/Scraper");
 var url = require("url");
 
-var articleUrl = "http://UK.reuters.com/article/2011/09/20/uk-britain-eu-idUKTRE78J15I20110920";
+var args = process.argv.slice(2);
+var articleUrl = (args.length) ? args[0] : "http://UK.reuters.com/article/2011/09/20/uk-britain-eu-idUKTRE78J15I20110920";
+// var articleUrl = "https://uk.reuters.com/article/uk-usa-russia-butina/u-s-judge-orders-accused-russian-agent-butina-kept-in-jail-idUKKCN1LQ1XF";
 
 Scraper.Scraper(articleUrl, function($page, pageUrl) {
     console.log(pageUrl);
