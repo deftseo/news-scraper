@@ -26,6 +26,7 @@ Scraper.Scraper(articleUrl, function($page, pageUrl) {
     var article = {
         title: title,
         published: published,
+        link: pageUrl,
         section: channel,
         body : [],
         media: []
