@@ -27,6 +27,7 @@ crawler
 
         var $sections = $page('div.print-edition__content ul li.list__item');
         var sections = [];
+        var numStories = 0;
 
         $sections.each(function() {
             var $section = $page(this);
@@ -49,6 +50,7 @@ crawler
                 }
 
                 stories.push(story);
+                numStories++;
             });
 
             var section = {
