@@ -59,11 +59,17 @@ crawler
                 var $story = $page(this);
                 var title = $story.text().trim();
                 var storyUrl = $story.attr('href');
+                var $subtitle = $story.parent('.article').prev('h5');
+                var subtitle = $subtitle.text().trim();
 
                 var story = {
                     url: urlUtils.normaliseUrl(storyUrl, link.href),
                     title: title
                 };
+
+                if (subtitle) {
+                    story.subtitle = subtitle;
+                }
 
                 stories.push(story);
                 numStories++;
