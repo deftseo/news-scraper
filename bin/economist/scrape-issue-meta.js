@@ -18,9 +18,9 @@ crawler
         return false;
     })
     .on('page', function(link, $page) {
-        var $coverImg = $page('div.print-edition__cover-widget__image img');
+        var $coverImg = $page('div.print-edition__cover-widget__image img, #cover-image img');
         var coverImages = $coverImg.attr('srcset') || '';
-        var imageList = coverImages ? parseSrcsetToList(coverImages) : [];
+        var imageList = coverImages ? parseSrcsetToList(coverImages) : [$coverImg.attr('src')];
 
         var $header = $page('h1.print-edition__main-title-header');
         var coverDate = $page('span.print-edition__main-title-header__date', $header).text().trim();
