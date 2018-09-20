@@ -22,8 +22,8 @@ crawler
         var coverImages = $coverImg.attr('srcset') || '';
         var imageList = coverImages ? parseSrcsetToList(coverImages) : [$coverImg.attr('src')];
 
-        var $header = $page('h1.print-edition__main-title-header');
-        var coverDate = $page('span.print-edition__main-title-header__date', $header).text().trim();
+        var $header = $page('h1.print-edition__main-title-header, h1.issue-info-date');
+        var coverDate = $page('span.print-edition__main-title-header__date, .issue-date', $header).text().trim();
 
         var $sections = $page('div.print-edition__content ul li.list__item');
         var sections = [];
