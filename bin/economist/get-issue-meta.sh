@@ -5,7 +5,7 @@ BIN_DIR="${CWD}/bin/economist/"
 DATA_DIR="data/economist/"
 META_FILE="index.json"
 
-MIN_FILE_SIZE=0
+MIN_FILE_SIZE=2048
 
 YEAR=$1
 YEAR_DIR="${DATA_DIR}${YEAR}"
