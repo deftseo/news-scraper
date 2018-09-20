@@ -1,4 +1,6 @@
 var Crawler = require('node-crawler/Crawler');
+var urlUtils = require('node-crawler/lib/url-utils');
+
 var fs = require('fs');
 
 var crawler = Crawler.Crawler();
@@ -41,7 +43,7 @@ crawler
                 var subtitle = $page('span.print-edition__link-flytitle', $story).text().trim();
 
                 var story = {
-                    url: crawler.normaliseUrl(storyUrl, link.href),
+                    url: urlUtils.normaliseUrl(storyUrl, link.href),
                     title: title
                 };
 
