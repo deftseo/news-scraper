@@ -25,13 +25,13 @@ crawler
         var $header = $page('h1.print-edition__main-title-header, h1.issue-info-date');
         var coverDate = $page('span.print-edition__main-title-header__date, .issue-date', $header).text().trim();
 
-        var $sections = $page('div.print-edition__content ul li.list__item');
+        var $sections = $page('div.print-edition__content ul li.list__item, div.view-print-edition div.section');
         var sections = [];
         var numStories = 0;
 
         $sections.each(function() {
             var $section = $page(this);
-            var title = $page('div.list__title', $section).text().trim();
+            var title = $page('div.list__title, h4', $section).text().trim();
             var stories = [];
 
             $page('a.list__link', $section).each(function() {
