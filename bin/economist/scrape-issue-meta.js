@@ -55,6 +55,20 @@ crawler
                 numStories++;
             });
 
+            $page('div.article a.node-link', $section).each(function() {
+                var $story = $page(this);
+                var title = $story.text().trim();
+                var storyUrl = $story.attr('href');
+
+                var story = {
+                    url: urlUtils.normaliseUrl(storyUrl, link.href),
+                    title: title
+                };
+
+                stories.push(story);
+                numStories++;
+            });
+
             var section = {
                 title: title,
                 stories: stories
