@@ -5,8 +5,10 @@ var fs = require('fs');
 
 var crawler = Crawler.Crawler();
 
+var defaultDate = '2000-03-11'; // '2018-09-01'
+
 var args = process.argv.slice(2);
-var issueDate = (args.length) ? args[0] : '2018-09-01';
+var issueDate = (args.length) ? args[0] : defaultDate;
 
 var startUrl = "https://www.economist.com/printedition/" + issueDate;
 
