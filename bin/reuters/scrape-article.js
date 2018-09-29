@@ -32,6 +32,11 @@ Scraper.Scraper(articleUrl, function($page, pageUrl) {
         media: []
     };
 
+    if (!$articleText.length) {
+        $articleText = $page("div.StandardArticleBody_body div > pre");
+        article.type = "press-release";
+    }
+
     $articleText.each(function() {
         var $para = $page(this);
         var text = $para.text().trim();
