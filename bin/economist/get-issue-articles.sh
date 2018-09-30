@@ -23,7 +23,10 @@ if [ -f "$ISSUE_DIR/${META_FILE}" ]; then
         FILE_NAME="${ARTICLE_ID}.json"
         # echo "[FILE] ${FILE_NAME}"
 
-        if [ ! -f "${ISSUE_DIR}/${FILE_NAME}" ]; then
+        if [[ -z "${ARTICLE_ID}" ]]; then
+            echo "[ERROR] Extracting ARTICLE ID from: ${URL}"
+
+        elif  [ ! -f "${ISSUE_DIR}/${FILE_NAME}" ]; then
             echo "[SCRAPE] ${URL}"
             node "${BIN_DIR}/scrape-article.js" $URL > ${ISSUE_DIR}/${FILE_NAME}
 
