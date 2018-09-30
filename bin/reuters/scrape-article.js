@@ -9,8 +9,11 @@ Scraper.Scraper(articleUrl, function($page, pageUrl) {
     console.log(pageUrl);
     var $header = $page("div.ArticleHeader_content-container");
     var title = $page("h1.ArticleHeader_headline", $header).text().trim();
-    var pubDate = $page("div.ArticleHeader_date", $header).text().split('/');
-    var published = pubDate[0].trim() + " " + pubDate[1].trim();
+    var $articleDate = $page("div.ArticleHeader_date", $header);
+    var pubDate = (
+        $articleDate.length ? $articleDate.text().split('/') : null
+    );
+    var published = pubDate ? pubDate[0].trim() + " " + pubDate[1].trim() : null;
     var channel = $page("div.ArticleHeader_channel a", $header).text().trim();
     var $byline = $page("div.BylineBar_byline a", $header);
     var author = $byline.text().trim();
