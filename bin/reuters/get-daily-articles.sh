@@ -27,7 +27,7 @@ if [ -f "$ISSUE_DIR/${META_FILE}" ]; then
             FILE_SIZE=$(wc -c <"${ISSUE_DIR}/${FILE_NAME}")
             if [ $FILE_SIZE -le $MIN_FILE_SIZE ]; then
                 echo "[-WARN-] File size too small! ($FILE_SIZE). Deleting."
-                rm ${ISSUE_DIR}/${FILE_name}
+                rm ${ISSUE_DIR}/${FILE_NAME}
 
             else
                 echo "[SAVED-] ${DATE}/${FILE_NAME} (${FILE_SIZE})"
