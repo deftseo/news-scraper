@@ -63,14 +63,17 @@ Scraper.Scraper(articleUrl, function($page, pageUrl) {
         var imgSrc = $image.attr('src');
         var $caption = $page("figcaption", $figure);
         var caption = $caption.text();
+        // console.error("[DEBUG]", imgSrc);
 
         var image = {
             type: "image",
-            src: url.resolve(pageUrl, imgSrc),
+            src: imgSrc ? url.resolve(pageUrl, imgSrc) : null,
             caption: caption
         };
 
-        article.media.push(image);
+        if (image.imgSrc) {
+            article.media.push(image);
+        }
     });
 
     console.log(JSON.stringify(article, null, 4));
