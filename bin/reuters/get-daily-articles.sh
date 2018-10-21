@@ -4,7 +4,7 @@ CWD=`pwd`
 BIN_DIR="${CWD}/bin/reuters/"
 DATA_DIR="data/reuters/"
 META_FILE="index.json"
-SLEEP_TIME=10
+SLEEP_TIME=5
 MIN_FILE_SIZE=0
 
 DATE=$1
