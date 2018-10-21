@@ -23,6 +23,7 @@ Scraper.Scraper(articleUrl, function($page, pageUrl) {
     var $articleText = $page('div.blog-post__text > p');
 
     var article = {
+        link: pageUrl,
         title: articleTitle,
         subtitle: articleSubtitle,
         summary: articleSummary,
