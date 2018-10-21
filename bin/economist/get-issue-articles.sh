@@ -19,7 +19,7 @@ if [ -f "$ISSUE_DIR/${META_FILE}" ]; then
     while read -r URL; do
         # echo "[URL] ${URL}"
         # ARTICLE_ID=`echo ${URL} | grep -Eo "[[:digit:]]{7,8}"
-        ARTICLE_ID=`expr match "$URL" '.*/\([0-9]\{6,8\}\)'`
+        ARTICLE_ID=`expr match "$URL" '.*/\([0-9]\{5,8\}\)'`
         FILE_NAME="${ARTICLE_ID}.json"
         # echo "[FILE] ${FILE_NAME}"
 
