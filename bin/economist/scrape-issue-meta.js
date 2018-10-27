@@ -1,9 +1,7 @@
-var Crawler = require('node-crawler/Crawler');
-var urlUtils = require('node-crawler/lib/url-utils');
-
+var DeftCrawler = require('deft-crawler');
 var fs = require('fs');
 
-var crawler = Crawler.Crawler();
+var crawler = DeftCrawler.Crawler();
 
 var defaultDate = '2000-03-11'; // '2018-09-01'
 
@@ -45,7 +43,7 @@ crawler
                 var subtitle = $page('span.print-edition__link-flytitle', $story).text().trim();
 
                 var story = {
-                    url: urlUtils.normaliseUrl(storyUrl, link.href),
+                    url: DeftCrawler.normaliseUrl(storyUrl, link.href),
                     title: title
                 };
 
@@ -65,7 +63,7 @@ crawler
                 var subtitle = $subtitle.text().trim();
 
                 var story = {
-                    url: urlUtils.normaliseUrl(storyUrl, link.href),
+                    url: DeftCrawler.normaliseUrl(storyUrl, link.href),
                     title: title
                 };
 
