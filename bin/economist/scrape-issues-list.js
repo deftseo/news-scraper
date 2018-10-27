@@ -1,7 +1,7 @@
-var Crawler = require('node-crawler/Crawler');
+var DeftCrawler = require('deft-crawler');
 var fs = require('fs');
 
-var crawler = Crawler.Crawler();
+var crawler = DeftCrawler.Crawler();
 
 var args = process.argv.slice(2);
 var year = (args.length) ? args[0] : false;
