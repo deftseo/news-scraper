@@ -12,6 +12,10 @@ YEAR="${DATE:0:4}"
 
 ISSUE_DIR="${DATA_DIR}${YEAR}/${DATE}"
 
+if [ ! -d "$ISSUE_DIR" ]; then
+    mkdir -p $ISSUE_DIR
+fi
+
 if [ ! -f "$ISSUE_DIR/${META_FILE}" ]; then
 	node ${BIN_DIR}scrape-daily-list.js ${DATE} > ${ISSUE_DIR}/${META_FILE}
 fi
