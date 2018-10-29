@@ -13,8 +13,8 @@ YEAR="${DATE:0:4}"
 ISSUE_DIR="${DATA_DIR}${YEAR}/${DATE}"
 
 function delete_if_empty {
-    FILE_NAME=$1
-    FILE_SIZE=$(wc -c <"$FILE_NAME")
+    local FILE_NAME=$1
+    local FILE_SIZE=$(wc -c <"$FILE_NAME")
     if [ $FILE_SIZE -le $MIN_FILE_SIZE ]; then
         echo "[-WARN-] File size too small! ($FILE_SIZE). Deleting."
         rm ${FILE_NAME}
