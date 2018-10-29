@@ -45,10 +45,8 @@ var getArticle = function($page, pageUrl) {
         }
     });
 
-    // console.log(JSON.stringify(article, null, 4));
     return article;
 };
-
 
 
 module.exports = {
